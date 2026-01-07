@@ -2,3 +2,13 @@
 title = "29的主页（2026）"
 authors = ["29"]
 language = "zh"
+
+[rust]
+edition = "2024"
+
+[build]
+build-dir = "../../deploy/home"
+
+[output.html]
+git-repository-url = "https://github.com/czy-29/2026/tree/main/website/src/home"
+site-url = "/home/"
