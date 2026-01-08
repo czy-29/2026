@@ -1,0 +1,16 @@
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 8 * * *'
+
+env:
+  TZ: Asia/Shanghai
+  GIT_CLONE_REMOTE: ${{ secrets.GIT_CLONE_REMOTE }}
+  PUSHOVER_APP_TOKEN: ${{ secrets.PUSHOVER_APP_TOKEN }}
+  PUSHOVER_USER_KEY: ${{ secrets.PUSHOVER_USER_KEY }}
+
+jobs:
+  check-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 0
