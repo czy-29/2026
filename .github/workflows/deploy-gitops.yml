@@ -1,0 +1,17 @@
+on: workflow_dispatch
+
+env:
+  TZ: Asia/Shanghai
+  OSS_2026_BUCKET: ${{ secrets.OSS_2026_BUCKET }}
+  OSS_2026_ENDPOINT: ${{ secrets.OSS_2026_ENDPOINT }}
+  OSS_2026_TOKEN: ${{ secrets.OSS_2026_TOKEN }}
+  OSS_ACCESS_KEY_ID: ${{ secrets.OSS_ACCESS_KEY_ID }}
+  OSS_ACCESS_KEY_SECRET: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
+  PUSHOVER_APP_TOKEN: ${{ secrets.PUSHOVER_APP_TOKEN }}
+  PUSHOVER_USER_KEY: ${{ secrets.PUSHOVER_USER_KEY }}
+
+jobs:
+  deploy-gitops:
+    runs-on: ubuntu-latest
+    steps:
+      - run: git checkout

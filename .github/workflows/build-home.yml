@@ -1,0 +1,19 @@
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'website/src/home/**'
+
+env:
+  TZ: Asia/Shanghai
+  GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
+  GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
+  PUSHOVER_APP_TOKEN: ${{ secrets.PUSHOVER_APP_TOKEN }}
+  PUSHOVER_USER_KEY: ${{ secrets.PUSHOVER_USER_KEY }}
+
+jobs:
+  build-home:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - run: exit 0

@@ -1,0 +1,15 @@
+on: [push, workflow_dispatch]
+
+env:
+  TZ: Asia/Shanghai
+  PUSHOVER_APP_TOKEN: ${{ secrets.PUSHOVER_APP_TOKEN }}
+  PUSHOVER_USER_KEY: ${{ secrets.PUSHOVER_USER_KEY }}
+  PUSH_GITEE_PASSWORD: ${{ secrets.PUSH_GITEE_PASSWORD }}
+  PUSH_GITEE_REMOTE: ${{ secrets.PUSH_GITEE_REMOTE }}
+  PUSH_GITEE_USERNAME: ${{ secrets.PUSH_GITEE_USERNAME }}
+
+jobs:
+  mirror-gitee:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 0
