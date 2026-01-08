@@ -1,0 +1,50 @@
+[package]
+name = "gitops"
+authors = ["29 <791603901@qq.com>"]
+version = "0.0.1"
+license = "Unlicense"
+readme = "README.md"
+keywords = ["IaC", "infra", "infrastructure", "DevOps"]
+categories = ["command-line-utilities", "development-tools", "filesystem"]
+repository = "https://github.com/czy-29/2026/tree/main/gitops"
+homepage = "https://2026.29bot.com/home/gitops"
+description = """
+用于 `Github Actions Workflow` 的 `CI/CD` 自动化命令行工具。
+"""
+edition = "2024"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+# Because we are using 2024 Edition.
+# 因为我们正在使用2024 Edition。
+# https://blog.rust-lang.org/2025/02/20/Rust-1.85.0.html
+rust-version = "1.85.0"
+
+[package.metadata.docs.rs]
+all-features = true
+
+[dependencies]
+anyhow = "1.0.100"
+clap = { version = "4.5.54", features = ["derive"] }
+dotenvy = "0.15.7"
+fs_extra = "1.3.0"
+git2 = "0.20.3"
+mdbook-driver = { version = "0.5.2", features = ["search"] }
+opendal = { version = "0.55.0", features = ["layers-mime-guess", "services-oss"] }
+pushover-rs = "0.3.22"
+sysinfo = { version = "0.37.2", default-features = false, features = ["system"] }
+tokio = { version = "1.49.0", features = ["full"] }
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.22", features = ["chrono"] }
+walkdir = "2.5.0"
+
+[target.'cfg(windows)'.dependencies]
+nu-ansi-term = "0.50.3"
+
+[dev-dependencies]
+
+[build-dependencies]
+version_check = "0.9.5"
+
+[features]
