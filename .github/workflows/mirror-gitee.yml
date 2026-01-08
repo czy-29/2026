@@ -2,6 +2,7 @@ on: [push, workflow_dispatch]
 
 env:
   TZ: Asia/Shanghai
+  GIT_CLONE_REMOTE: ${{ secrets.GIT_CLONE_REMOTE }}
   PUSHOVER_APP_TOKEN: ${{ secrets.PUSHOVER_APP_TOKEN }}
   PUSHOVER_USER_KEY: ${{ secrets.PUSHOVER_USER_KEY }}
   PUSH_GITEE_PASSWORD: ${{ secrets.PUSH_GITEE_PASSWORD }}

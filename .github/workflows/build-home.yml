@@ -6,10 +6,13 @@ on:
 
 env:
   TZ: Asia/Shanghai
+  GIT_CLONE_REMOTE: ${{ secrets.GIT_CLONE_REMOTE }}
   GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
   GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
   PUSHOVER_APP_TOKEN: ${{ secrets.PUSHOVER_APP_TOKEN }}
   PUSHOVER_USER_KEY: ${{ secrets.PUSHOVER_USER_KEY }}
+  PUSH_GITHUB_ACCESS_TOKEN: ${{ secrets.PUSH_GITHUB_ACCESS_TOKEN }}
+  PUSH_GITHUB_USERNAME: ${{ secrets.PUSH_GITHUB_USERNAME }}
 
 jobs:
   build-home:

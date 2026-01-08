@@ -14,4 +14,4 @@ jobs:
   deploy-gitops:
     runs-on: ubuntu-latest
     steps:
-      - run: git checkout
+      - run: git clone ${{ secrets.GIT_CLONE_REMOTE }} 2026
