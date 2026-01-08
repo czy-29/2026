@@ -15,5 +15,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: git clone ${{ secrets.GIT_CLONE_REMOTE }} 2026
-      - run: cd 2026/gitops
-      - run: cargo run --release -- deploy-self
+      - run: cd 2026/gitops && cargo run --release -- deploy-self
