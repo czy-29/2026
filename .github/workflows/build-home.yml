@@ -17,6 +17,5 @@ env:
 jobs:
   build-home:
     runs-on: ubuntu-latest
-    permissions: write-all
     steps:
       - run: exit 0
