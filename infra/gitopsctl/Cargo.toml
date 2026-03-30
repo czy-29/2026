@@ -2,7 +2,7 @@
 name = "gitopsctl"
 authors = ["29 <791603901@qq.com>"]
 version = "0.0.1"
-license = "Unlicense"
+license = "Apache-2.0"
 readme = "README.md"
 keywords = ["IaC", "infra", "infrastructure", "DevOps"]
 categories = ["command-line-utilities", "development-tools", "filesystem"]
