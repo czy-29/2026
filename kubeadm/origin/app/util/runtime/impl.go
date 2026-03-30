@@ -41,11 +41,11 @@ type Impl interface {
 }
 
 func (*defaultImpl) NewRemoteRuntimeService(ctx context.Context, endpoint string, connectionTimeout time.Duration) (criapi.RuntimeService, error) {
-	return criclient.NewRemoteRuntimeService(ctx, endpoint, connectionTimeout, nil, false)
+	return criclient.NewRemoteRuntimeService(ctx, endpoint, connectionTimeout, nil)
 }
 
 func (*defaultImpl) NewRemoteImageService(ctx context.Context, endpoint string, connectionTimeout time.Duration) (criapi.ImageManagerService, error) {
-	return criclient.NewRemoteImageService(ctx, endpoint, connectionTimeout, nil, false)
+	return criclient.NewRemoteImageService(ctx, endpoint, connectionTimeout, nil)
 }
 
 func (*defaultImpl) RuntimeConfig(ctx context.Context, runtimeService criapi.RuntimeService) (*runtimeapi.RuntimeConfigResponse, error) {
