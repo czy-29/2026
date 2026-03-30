@@ -1,0 +1,30 @@
+on:
+  workflow_dispatch:
+  push:
+  schedule:
+    - cron: '*/5 * * * *'
+
+env:
+  TZ: Asia/Shanghai
+  GIT_CLONE_REMOTE: ${{ secrets.GIT_CLONE_REMOTE }}
+  GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
+  GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
+  OSS_2026_BUCKET: ${{ secrets.OSS_2026_BUCKET }}
+  OSS_2026_ENDPOINT: ${{ secrets.OSS_2026_ENDPOINT }}
+  OSS_2026_TOKEN: ${{ secrets.OSS_2026_TOKEN }}
+  OSS_ACCESS_KEY_ID: ${{ secrets.OSS_ACCESS_KEY_ID }}
+  OSS_ACCESS_KEY_SECRET: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
+  PUSH_GITEE_PASSWORD: ${{ secrets.PUSH_GITEE_PASSWORD }}
+  PUSH_GITEE_REMOTE: ${{ secrets.PUSH_GITEE_REMOTE }}
+  PUSH_GITEE_USERNAME: ${{ secrets.PUSH_GITEE_USERNAME }}
+  PUSHOVER_APP_TOKEN: ${{ secrets.PUSHOVER_APP_TOKEN }}
+  PUSHOVER_USER_KEY: ${{ secrets.PUSHOVER_USER_KEY }}
+  PUSH_GITHUB_ACCESS_TOKEN: ${{ secrets.PUSH_GITHUB_ACCESS_TOKEN }}
+  PUSH_GITHUB_USERNAME: ${{ secrets.PUSH_GITHUB_USERNAME }}
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -O https://raw.githubusercontent.com/czy-29/2026/main/gitopsctl.toml
+      - run: cat gitopsctl.toml
