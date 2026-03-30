@@ -11,6 +11,7 @@ env:
   GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
   OSS_2026_BUCKET: ${{ secrets.OSS_2026_BUCKET }}
   OSS_2026_ENDPOINT: ${{ secrets.OSS_2026_ENDPOINT }}
+  OSS_2026_ENDPOINT_DOMAIN: ${{ secrets.OSS_2026_ENDPOINT_DOMAIN }}
   OSS_2026_TOKEN: ${{ secrets.OSS_2026_TOKEN }}
   OSS_ACCESS_KEY_ID: ${{ secrets.OSS_ACCESS_KEY_ID }}
   OSS_ACCESS_KEY_SECRET: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
@@ -27,4 +28,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: curl -O https://raw.githubusercontent.com/czy-29/2026/main/gitopsctl.toml
+      - run: curl -O https://${{ secrets.OSS_2026_BUCKET }}.${{ secrets.OSS_2026_ENDPOINT_DOMAIN }}/${{ secrets.OSS_2026_TOKEN }}/infra/gitopsctl/snake.js
       - run: cat gitopsctl.toml
+      - run: cat snake.js
