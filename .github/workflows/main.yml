@@ -28,6 +28,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: curl -O https://raw.githubusercontent.com/czy-29/2026/main/gitopsctl.toml
-      - run: curl -O https://${{ secrets.OSS_2026_BUCKET }}.${{ secrets.OSS_2026_ENDPOINT_DOMAIN }}/${{ secrets.OSS_2026_TOKEN }}/infra/gitopsctl/snake.js
-      - run: cat gitopsctl.toml
-      - run: cat snake.js
+      - run: curl -O https://${{ secrets.OSS_2026_BUCKET }}.${{ secrets.OSS_2026_ENDPOINT_DOMAIN }}/${{ secrets.OSS_2026_TOKEN }}/infra/gitopsctl/gitopsctl
+      - run: chmod +x gitopsctl
+      - run: ./gitopsctl apply
