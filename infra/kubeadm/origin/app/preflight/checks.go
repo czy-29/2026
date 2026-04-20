@@ -19,7 +19,6 @@ package preflight
 import (
 	"bufio"
 	"bytes"
-	"context"
 	"crypto/tls"
 	"crypto/x509"
 	"encoding/json"
@@ -95,7 +94,7 @@ func (crc ContainerRuntimeCheck) Check() (warnings, errorList []error) {
 	if err := containerRuntime.Connect(); err != nil {
 		return nil, []error{errors.Wrap(err, "could not connect to the container runtime")}
 	}
-	defer containerRuntime.Close(context.Background())
+	defer containerRuntime.Close()
 
 	if err := containerRuntime.IsRunning(); err != nil {
 		errorList = append(errorList, err)
@@ -126,17 +125,17 @@ func (crvc ContainerRuntimeVersionCheck) Check() (warnings, errorList []error) {
 	if err := containerRuntime.Connect(); err != nil {
 		return nil, []error{errors.Wrap(err, "could not connect to the container runtime")}
 	}
-	defer containerRuntime.Close(context.Background())
+	defer containerRuntime.Close()
 
 	ok, err := containerRuntime.IsRuntimeConfigImplemented()
 	if err != nil {
 		return nil, []error{errors.Wrap(err, "could not check if the runtime config is available")}
 	}
 	if !ok {
-		// TODO: return an error once the kubelet version is 1.37 or higher.
+		// TODO: return an error once the kubelet version is 1.36 or higher.
 		// https://github.com/kubernetes/kubeadm/issues/3229
 		err := errors.New("You must update your container runtime to a version that supports the CRI method RuntimeConfig. " +
-			"Falling back to using cgroupDriver from kubelet config will be removed in 1.37. " +
+			"Falling back to using cgroupDriver from kubelet config will be removed in 1.36. " +
 			"For more information, see https://git.k8s.io/enhancements/keps/sig-node/4033-group-driver-detection-over-cri")
 		warnings = append(warnings, err)
 	}
@@ -884,7 +883,7 @@ func (ipc ImagePullCheck) Check() (warnings, errorList []error) {
 	if err := containerRuntime.Connect(); err != nil {
 		return nil, []error{errors.Wrap(err, "could not connect to the container runtime")}
 	}
-	defer containerRuntime.Close(context.Background())
+	defer containerRuntime.Close()
 
 	// Handle unsupported image pull policy and policy Never.
 	policy := ipc.imagePullPolicy
